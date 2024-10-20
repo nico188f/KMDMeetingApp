@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using api.Models.Activities;
 
 namespace api.Models
 {
@@ -13,6 +14,6 @@ namespace api.Models
         public int NumOfSeats { get; set; }
         public int FloorNum { get; set; }
         public int RoomNum { get; set; }
-        public List<Activity> Activities { get; set; } = new List<Activity>();
+        public List<Activities.Activity> Activities { get; set; } = new List<Activities.Activity>();
     }
 }

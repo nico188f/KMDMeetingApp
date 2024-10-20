@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace api.Models.Activities
 {
-    public abstract class Meeting : Activity
+    public class Meeting : Activity
     {
         public string Topic { get; set; } = String.Empty;
     }
