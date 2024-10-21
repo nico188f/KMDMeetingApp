@@ -61,5 +61,19 @@ namespace api.Controllers
 
             return Ok(meetingRoom);
         }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete([FromRoute] int id){
+            var meetingRoom = _context.MeetingRooms.Find(id);
+
+            if(meetingRoom == null){
+                return NotFound();
+            }
+
+            _context.MeetingRooms.Remove(meetingRoom);
+            _context.SaveChanges();
+
+            return NoContent();
+        }
     }
 }
