@@ -46,5 +46,20 @@ namespace api.Controllers
 
             return CreatedAtAction(nameof(GetById), new { id = meetingRoom.Id }, meetingRoom);
         }
+
+        [HttpPut("{id}")]
+        public IActionResult Update([FromRoute] int id, [FromBody] UpdateMeetingRoomRequest updateMeetingRoomRequest) {
+            var meetingRoom = _context.MeetingRooms.Find(id);
+
+            if(meetingRoom == null){
+                return NotFound();
+            }
+
+            // Update the meeting room with the new values
+            _context.Entry(meetingRoom).CurrentValues.SetValues(updateMeetingRoomRequest);
+            _context.SaveChanges();
+
+            return Ok(meetingRoom);
+        }
     }
 }
