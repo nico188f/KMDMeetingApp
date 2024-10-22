@@ -64,15 +64,15 @@ namespace api.Controllers
         }
 
         [HttpDelete("{id}")]
-        public IActionResult Delete([FromRoute] int id){
-            var meetingRoom = _context.MeetingRooms.Find(id);
+        public async Task<IActionResult> Delete([FromRoute] int id){
+            var meetingRoom = await _context.MeetingRooms.FindAsync(id);
 
             if(meetingRoom == null){
                 return NotFound();
             }
 
             _context.MeetingRooms.Remove(meetingRoom);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             return NoContent();
         }
