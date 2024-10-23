@@ -19,12 +19,12 @@ namespace api.Repositories
         }
         public async Task<List<JobInterview>> GetAllAsync()
         {
-            return await _context.JobInterviews.ToListAsync();
+            return await _context.JobInterviews.Include(c => c.MeetingRoom).ToListAsync();
         }
 
         public async Task<JobInterview?> GetByIdAsync(int id)
         {
-            return await _context.JobInterviews.FindAsync(id);
+            return await _context.JobInterviews.Include(c => c.MeetingRoom).FirstOrDefaultAsync(i => i.Id == id);
         }
         public async Task<JobInterview> CreateAsync(JobInterview jobInterview)
         {

@@ -20,12 +20,12 @@ namespace api.Repositories
 
         public async Task<List<Meeting>> GetAllAsync()
         {
-            return await _context.Meetings.ToListAsync();
+            return await _context.Meetings.Include(c => c.MeetingRoom).ToListAsync();
         }
 
         public async Task<Meeting?> GetByIdAsync(int id)
         {
-            return await _context.Meetings.FindAsync(id);
+            return await _context.Meetings.Include(c => c.MeetingRoom).FirstOrDefaultAsync(i => i.Id == id);
         }
         
         public async Task<Meeting> CreateAsync(Meeting meeting) {
