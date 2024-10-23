@@ -26,6 +26,7 @@ namespace api.Repositories
         {
             return await _context.MeetingRooms.FindAsync(id);
         }
+        
         public async Task<MeetingRoom> CreateAsync(MeetingRoom meetingRoom)
         {
             await _context.MeetingRooms.AddAsync(meetingRoom);

@@ -19,5 +19,17 @@ namespace api.Data
         public DbSet<JobInterview> JobInterviews { get; set; }
         public DbSet<Meeting> Meetings { get; set; }
         public DbSet<MeetingRoom> MeetingRooms { get; set; }
+
+        // protected override void OnModelCreating(ModelBuilder modelBuilder)
+        // {
+        //     modelBuilder.Entity<Models.Activities.Activity>()
+        //         .HasOne(a => a.MeetingRoom)
+        //         .WithMany(mr => mr.Activities)
+        //         .HasForeignKey(a => a.MeetingRoomId)
+        //         .IsRequired(false) // This makes the foreign key optional
+        //         .OnDelete(DeleteBehavior.Restrict); // Optional: Specify delete behavior
+
+        //     base.OnModelCreating(modelBuilder);
+        // }
     }
 }

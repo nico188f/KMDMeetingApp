@@ -16,6 +16,7 @@ builder.Services.AddDbContext<ApplicationDBContext>(options => {
 });
 
 builder.Services.AddScoped<IMeetingRoomRepository, MeetingRoomRepository>();
+builder.Services.AddScoped<IMeetingRepository, MeetingRepository>();
 
 var app = builder.Build();
 
