@@ -66,7 +66,7 @@ namespace api.Controllers
                 return NotFound();
             }
 
-            return Ok(deletedMeeting);
+            return NoContent();
         }
     }
 }
