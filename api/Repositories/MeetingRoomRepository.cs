@@ -6,6 +6,7 @@ using api.Data;
 using api.Dtos.MeetingRoom;
 using api.Interfaces;
 using api.Models;
+using api.Models.Activities;
 using Microsoft.EntityFrameworkCore;
 
 namespace api.Repositories
@@ -53,10 +54,15 @@ namespace api.Repositories
 
         public async Task<MeetingRoom?> DeleteAsync(int id)
         {
-            var meetingRoom = _context.MeetingRooms.Find(id);
+            var meetingRoom = await _context.MeetingRooms.Include(c => c.Activities).FirstOrDefaultAsync(i => i.Id == id);
 
             if(meetingRoom == null){
                 return null;
+            }
+
+            foreach (Activity activity in meetingRoom.Activities)
+            {
+                activity.MeetingRoomId = null;
             }
 
             _context.MeetingRooms.Remove(meetingRoom);
