@@ -30,7 +30,7 @@ namespace api.Controllers
             return Ok(meetingRooms);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}")]
         public async Task<IActionResult> GetById([FromRoute] int id){
             var meetingRoom = await _meetingRoomRepo.GetByIdAsync(id);
 
@@ -48,7 +48,7 @@ namespace api.Controllers
             return CreatedAtAction(nameof(GetById), new { id = meetingRoom.Id }, meetingRoom);
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("{id:int}")]
         public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateMeetingRoomRequest updateMeetingRoomRequest) {
             var meetingRoom = await _meetingRoomRepo.UpdateAsync(id, updateMeetingRoomRequest);
 
@@ -59,7 +59,7 @@ namespace api.Controllers
             return Ok(meetingRoom);
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("{id:int}")]
         public async Task<IActionResult> Delete([FromRoute] int id){
             var meetingRoom = await _meetingRoomRepo.DeleteAsync(id);
 

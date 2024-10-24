@@ -29,7 +29,7 @@ namespace api.Controllers
             return Ok(jobInterviews);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}")]
         public async Task<IActionResult> GetById([FromRoute] int id){
             var jobInterview = await _jobInterviewRepo.GetByIdAsync(id);
 
@@ -47,7 +47,7 @@ namespace api.Controllers
             return CreatedAtAction(nameof(GetById), new { id = newJobInterview.Id }, newJobInterview);
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("{id:int}")]
         public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateJobInterviewRequest updateJobInterviewRequest){
             var updatedJobInterview = await _jobInterviewRepo.UpdateAsync(id, updateJobInterviewRequest);
 
@@ -58,7 +58,7 @@ namespace api.Controllers
             return Ok(updatedJobInterview);
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("{id:int}")]
         public async Task<IActionResult> Delete([FromRoute] int id){
             var deletedJobInterview = await _jobInterviewRepo.DeleteAsync(id);
 
