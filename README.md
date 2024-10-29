@@ -1,18 +1,23 @@
-# Meeting App
+# KMD Meeting App
 
-* Din opgave er at implementere en applikation hvori man kan oprette, redigere, slette og læse mødelokaler. Løsningen skal både inkludere en detalje læsning ud fra lokalets ID samt en listevisning der inkluderer navn og lokation.
-* Et mødelokale har felterne Id, Navn, Lokation og Pladsantal.
-* Du bestemmer selv om du vil lave en web applikation, nogle REST services, en konsol applikation eller en kombination, da det ikke er brugergrænsefladen der er det vigtige.
-* Du skal anvende følgende teknologier:
-	* En relationel database som f.eks PostgreSQL, MySQL eller Maria DB. Dog er det et krav at databasen har et Docker image (se det sidste punkt).
-	* C# / .NET Core
-	* Docker (Der skal laves en Docker fil som kan bygge og køre projektet) 
-* Du skal lave en Docker Compose fil som kan starte projektet. Den skal bygge Docker imaget for applikationen og linke det til en instans af databasen hvorefter applikationen skal startes op og være klar til brug. En bonus vil være også at inkluderer et eller andet UI værktøj til at browse databasens indhold i docker compose filen. I så fald vil kommandoen docker-compose up starte alle afhængighederne for din applikation, så du kan demonstrere den.
-* Det er mere vigtigt at du viser noget fedt med C#/.NET end at du demonstrerer at du kan anvende Visual Studio til at auto generere Razor views, data access logik el.lign.
-* Vær kreativ - gode idéer er velkomne.
+KMD Meeting App is a web application designed to manage meeting rooms, meetings and job interviews. It provides functionalities to create, read, update and delete meeting rooms and their associated activities.
 
-## Aflevering
+## Features
 
-* Aflever gerne en delvis løsning, hvis du ikke kan lave den helt færdig af den ene eller anden grund.
-* Du kan vælge at forke dette repo og sende løsningen ind som et Pull Request eller alternativt at zippe løsningen og sende den som mail (adresse udleveres seperat)
+-  Manage meeting rooms
+-  Schedule and manage job interviews and meetings
+-  RESTful API endpoints
 
+## Project Structure
+
+-  **Controllers**: Handles HTTP requests and responses.
+-  **Dtos**: Data Transfer Objects for transferring data between layers.
+-  **Mappers**: Maps data between different dtos and models.
+-  **Models**: Defines the data models used in the application.
+-  **Repositories**: Handles data access and persistence (communicates with the SQL database).
+
+## Class Diagram
+
+![Class Diagram](Class%20diagram.png)
+
+I did not have time to implement authentication and authorization for the employee model.
